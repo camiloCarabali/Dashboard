@@ -1,22 +1,35 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ClientComponent } from './client/client.component';
+import { TravelComponent } from './travel/travel.component';
+import { DriverComponent } from './driver/driver.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
-    pathMatch: 'full'
+    redirectTo: 'app-client',
+    pathMatch: 'full',
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  }
+    path: 'app-client',
+    component: ClientComponent,
+  },
+  {
+    path: 'app-driver',
+    component: DriverComponent,
+  },
+  {
+    path: 'app-travel',
+    component: TravelComponent,
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    CommonModule,
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
