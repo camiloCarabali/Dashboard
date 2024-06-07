@@ -8,10 +8,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Driver</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="card-container">
+    <ion-card *ngFor="let item of driverList">
+      <ion-card-header>
+        <ion-card-title>{{ item.name }}</ion-card-title>
+      </ion-card-header>
 
+      <ion-card-content>
+        ID: {{ item.id }}
+        Email: {{ item.email }}
+        Phone: {{ item.phone }}
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
