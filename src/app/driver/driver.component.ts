@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-driver',
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DriverComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private service: ApiService) { }
 
-  ngOnInit() {}
+  driverList: any[] = [];
+
+  ngOnInit() {
+    this.showDrivers();
+  }
+
+  showDrivers(){
+    this.service.getAllDriver().subscribe((res: any) => {
+      this.driverList = res;
+    });
+  }
 
 }
