@@ -8,10 +8,33 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Travel</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class ="card-container">
+    <ion-card color = "medium" *ngFor="let item of travelList">
+      <ion-card-header>
+        <ion-card-title>{{ item.name }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>Origin: {{ item.originName }}</p>
+        <p>Destination: {{ item.destinationName }}</p>
+        <p>Date: {{ item.date }}</p>
+        <p>Hour: {{ item.hour }}</p>
+        <p>Price: {{ item.price }}</p>
+        <p>Status: {{ item.status }}</p>
+        <p>Driver: {{ item.driver.name }}</p>
+        <p>Phone: {{ item.driver.phone }}</p>
+        <p>Email: {{ item.driver.email }}</p>
+        <p>Address: {{ item.driver.address }}</p>
+        <p>City: {{ item.driver.city }}</p>
+        <p>Country: {{ item.driver.country }}</p>
+        <p>Vehicle: {{ item.driver.vehicle }}</p>
+        <p>Vehicle Color: {{ item.driver.colorVehicle }}</p>
+        <p>Vehicle Brand: {{ item.driver.brandVehicle }}</p>
+        <p>Spaces in Vehicle: {{ item.driver.spacesInVehicle }}</p>
+        <p>Quality: {{ item.driver.quality }}</p>
+        <p>License: {{ item.driver.licenseDriver }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 </ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-travel',
@@ -7,8 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TravelComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private service: ApiService) { }
 
-  ngOnInit() {}
+  travelList: any[] = [];
+
+  driver: any[] = [];
+
+  ngOnInit() {
+    this.showTravels();
+  }
+
+  showTravels(){
+    this.service.getAllTravel().subscribe((res: any) => {
+      this.travelList = res;
+    })
+  }
 
 }
