@@ -10,6 +10,7 @@ import { ApiService } from './services/api.service';
 export class AppComponent implements OnInit {
 
   public appPages = [
+    { title: 'Overview', url: '/app-overview', icon: 'bar-chart' },
     { title: 'Client', url: '/app-client', icon: 'person' },
     { title: 'Driver', url: '/app-driver', icon: 'car' },
     { title: 'Travel', url: '/app-travel', icon: 'navigate' },

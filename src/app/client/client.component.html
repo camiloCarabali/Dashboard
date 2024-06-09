@@ -8,10 +8,22 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Client</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class ="card-container">
+    <ion-card *ngFor="let item of clientList">
+      <ion-card-header>
+        <ion-card-title>{{ item.name }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        ID: {{ item.id}}
+        Name: {{item.name}}
+        Email: {{item.email}}
+        Phone: {{item.phone}}
+        Address: {{item.address}}
+        City: {{item.city}}
+        Country: {{item.country}}
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 </ion-content>

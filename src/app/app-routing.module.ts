@@ -4,6 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ClientComponent } from './client/client.component';
 import { TravelComponent } from './travel/travel.component';
 import { DriverComponent } from './driver/driver.component';
+import { OverviewComponent } from './overview/overview.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
     path: 'app-travel',
     component: TravelComponent,
   },
+  {
+    path: 'app-overview',
+    component: OverviewComponent
+  }
 ];
 
 @NgModule({

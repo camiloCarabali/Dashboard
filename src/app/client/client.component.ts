@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-client',
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private service: ApiService) { }
 
-  ngOnInit() {}
+  clientList: any[] = [];
+
+  ngOnInit() {
+    this.showClients();
+  }
+
+  showClients(){
+    this.service.getAllClient().subscribe((res: any) => {
+      this.clientList = res;
+    })
+  }
 
 }
