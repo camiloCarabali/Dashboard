@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import * as ApexCharts from 'apexcharts';
+import { compileNgModule } from '@angular/compiler';
 
 @Component({
   selector: 'app-overview',
@@ -15,11 +16,18 @@ export class OverviewComponent  implements OnInit {
   travelCountsList: any [] = [];
   driverTravelCounts: { [key: string]: number } = {};
 
+  nameClientList: any [] = [];
+  travelClientCountsList: any [] = [];
+  clientTravelCounts: { [key: string]: number } = {};
+
+
+
   ngOnInit() {
-    this.countTravels();
+    this.countTravelsByDriver();
+    this.countTravelsByClient();
   }
 
-  countTravels(){
+  countTravelsByDriver(){
     this.service.getAllTravel().subscribe((res: any) => {
       for(let travel of res) {
         if (travel.driver && travel.driver.name){
@@ -33,18 +41,32 @@ export class OverviewComponent  implements OnInit {
       }
       this.travelCountsList = Object.values(this.driverTravelCounts);
       this.nameDriverList = Object.keys(this.driverTravelCounts);
-      this.graphic(this.travelCountsList, this.nameDriverList)
+      this.graphic_bar(this.travelCountsList, this.nameDriverList)
     })
   }
 
-  graphic(dataY: any[], dataX: any[]){
+  countTravelsByClient(){
+    this.service.getAllClient().subscribe((res: any) => {
+      for(let client of res) {
+        if (client.travelsId && client.name){
+          let clientName = client.name;
+          this.clientTravelCounts[clientName] = client.travelsId.length;
+        }
+      }
+      this.travelClientCountsList = Object.values(this.clientTravelCounts);
+      this.nameClientList = Object.keys(this.clientTravelCounts);
+      this.graphic_pie(this.travelClientCountsList, this.nameClientList)
+    })
+  }
+
+  graphic_bar(dataY: any[], dataX: any[]){
 
     var options = {
       chart: {
         type: 'bar'
       },
       series: [{
-        name: 'sales',
+        name: 'travels',
         data: dataY
       }],
       xaxis: {
@@ -56,4 +78,33 @@ export class OverviewComponent  implements OnInit {
     
     chart.render();
   }
+
+  graphic_pie(dataY: any[], dataX: any[]){
+    var options = {
+      chart: {
+        type: 'donut'
+      },
+      series: dataY,
+      labels: dataX,
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    }
+    
+    var chart = new ApexCharts(document.querySelector("#chart2"), options);
+    
+    chart.render();
+  
+  
+  }
+
+
 }
