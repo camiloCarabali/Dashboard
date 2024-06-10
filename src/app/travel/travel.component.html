@@ -9,9 +9,9 @@
 
 <ion-content [fullscreen]="true">
   <div class ="card-container">
-    <ion-card color = "primary" *ngFor="let item of travelList">
+    <ion-card *ngFor="let item of travelList">
       <ion-card-header>
-        <ion-card-title>{{ item.name }}</ion-card-title>
+        <ion-card-title>{{ item.id }}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
@@ -27,12 +27,7 @@
         <p>Address: {{ item.driver.address }}</p>
         <p>City: {{ item.driver.city }}</p>
         <p>Country: {{ item.driver.country }}</p>
-        <p>Vehicle: {{ item.driver.vehicle }}</p>
-        <p>Vehicle Color: {{ item.driver.colorVehicle }}</p>
-        <p>Vehicle Brand: {{ item.driver.brandVehicle }}</p>
-        <p>Spaces in Vehicle: {{ item.driver.spacesInVehicle }}</p>
         <p>Quality: {{ item.driver.quality }}</p>
-        <p>License: {{ item.driver.licenseDriver }}</p>
       </ion-card-content>
     </ion-card>
   </div>
