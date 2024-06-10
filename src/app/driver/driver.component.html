@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Driver</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let item of driverList">
+    <ion-card-header>
+      <ion-card-title>{{ item.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>ID: {{ item.id }}</p>
+      <p>Email: {{ item.email }}</p>
+      <p>Phone: {{ item.phone }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

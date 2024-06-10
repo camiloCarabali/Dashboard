@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Travel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class ="card-container">
+    <ion-card *ngFor="let item of travelList">
+      <ion-card-header>
+        <ion-card-title>{{ item.id }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>Origin: {{ item.originName }}</p>
+        <p>Destination: {{ item.destinationName }}</p>
+        <p>Date: {{ item.date }}</p>
+        <p>Hour: {{ item.hour }}</p>
+        <p>Price: {{ item.price }}</p>
+        <p>Status: {{ item.status }}</p>
+        <p>Driver: {{ item.driver.name }}</p>
+        <p>Phone: {{ item.driver.phone }}</p>
+        <p>Email: {{ item.driver.email }}</p>
+        <p>Address: {{ item.driver.address }}</p>
+        <p>City: {{ item.driver.city }}</p>
+        <p>Country: {{ item.driver.country }}</p>
+        <p>Quality: {{ item.driver.quality }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>
